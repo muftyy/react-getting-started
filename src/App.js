@@ -6,7 +6,7 @@ class App extends Component{
     return(
       <div>
         i am gonna print a component below
-        <Ninjas/>
+        <Ninjas name="Mufti" age="27" belt="violet"/>
       </div>
     )
   }
