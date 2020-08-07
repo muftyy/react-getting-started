@@ -1,37 +1,22 @@
 import React, { Component } from 'react';
-import Ninjas from './Ninjas';
-import AddNinja from './AddNinja';
+import Navbar from './Navbar';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import About from './About';
+import Contact from './Contact';
+import Home from './Home';
 
 class App extends Component{
-  state = {
-    ninjas : [
-      {name: 'Ryu', age: 30, belt: 'pink', id: 1},
-      {name: 'Mario', age: 66, belt: 'red', id: 2},
-      {name: 'Luigi', age: 34, belt: 'blue', id: 3}
-    ]
-  }
-
-  addNinja = (newNinja) => {
-    newNinja.id = Math.random();
-    let ninjas = [...this.state.ninjas, newNinja];
-    this.setState({
-      ninjas
-    })
-  }
-
-  deleteNinja = (id) => {
-    let ninjas = this.state.ninjas.filter(ninjas => ninjas.id !== id);
-    this.setState({
-      ninjas
-    })
-  }
 
   render(){
     return(
-      <div>
-        <AddNinja addNinja={this.addNinja}/>
-        <Ninjas ninjas={this.state.ninjas} deleteNinja={this.deleteNinja}/>
-      </div>
+      <Router>
+        <div className="App">
+          <Navbar/>
+          <Route exact path="/" component={Home}/>
+          <Route path="/about" component={About}/>
+          <Route path="/contact" component={Contact}/>
+        </div>
+      </Router>
     )
   }
 }
