@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import 'materialize-css/dist/css/materialize.min.css'
+import 'materialize-css/dist/css/materialize.min.css';
+import { Link } from 'react-router-dom';
 
 class Home extends Component{
   state = {
@@ -24,7 +25,8 @@ class Home extends Component{
           <div className="post card" key={post.id}>
             <div className="card-content">
               <div className="card-title">
-                <span>{post.title}</span>
+                {/* <span>{post.title}</span> */}
+                <Link to={'/' + post.id}>{post.title}</Link>
                 <p>{post.body}</p>
               </div>
             </div>
