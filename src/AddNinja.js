@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import Ninjas from './Ninjas';
 
 class AddNinja extends Component{
   state = {
-      name: null,
-      age: null,
-      belt: null
+      name: '',
+      age: '',
+      belt: ''
 
   }
 
@@ -18,6 +17,11 @@ class AddNinja extends Component{
   handleSubmit = (e) => {
         e.preventDefault();
         this.props.addNinja(this.state);
+        this.setState({
+          name: '',
+          age: '',
+          belt: ''
+        })
   }
 
   render(){
@@ -25,13 +29,13 @@ class AddNinja extends Component{
       <>
         <form onSubmit={this.handleSubmit}>
             <label htmlFor="name"></label>
-            <input type="text" id="name" onChange={this.handleChange} placeholder="name"></input>
+            <input type="text" id="name" onChange={this.handleChange} placeholder="name" value={this.state.name}></input>
 
             <label htmlFor="age" ></label>
-            <input type="text" id="age" onChange={this.handleChange} placeholder="age"></input>
+            <input type="text" id="age" onChange={this.handleChange} placeholder="age" value={this.state.age}></input>
 
             <label htmlFor="belt" placeholder="name"></label>
-            <input type="text" id="belt" onChange={this.handleChange} placeholder="belt"></input>
+            <input type="text" id="belt" onChange={this.handleChange} placeholder="belt" value={this.state.belt}></input>
 
             <button>add ninja</button>
         </form>
